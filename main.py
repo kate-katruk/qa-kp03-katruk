@@ -3,50 +3,67 @@ from typing import List
 from abc import ABC, abstractmethod
 
 class FileSystem:
-    def __init__(self) -> None:
+    dir_max_elems: int
+    max_buf_file_size: int
+
+    def __init__(self, max_elems:int, max_buf_file_size:int) -> None:
         pass
 
     def listFilesAndSubdirections(self, path: str) -> List[str]:
         pass
 
-    def createDirectory(self, path: str) -> None:
+    def createDirectory(self, path: str) -> bool:
         pass
 
-    def readContentFromFile(self, filePath: str) -> str:
+    def deleteDirectory(self, path:str) -> bool:
         pass
 
-    def appendContentToLogTextFile(self, filePath: str, content: str) -> None:
+    def moveDirectory(self, pathFrom: str, pathTo: str) -> bool:
         pass
 
-    def pushContentToBufferFile(self, filePath: str, content: str) -> None:
+
+
+    def createBinFile(self, path: str, fileName: str) -> bool:
         pass
 
-    def consumeContentFromBufferFile(self, filePath: str) -> str:
+    def deleteBinFile(self, filePath: str) -> bool:
         pass
 
-    def moveElemet(self, path: str, newPath: str) -> str:
+    def readBinFile(self, filePath: str) -> str:
+        pass
+
+    def moveBinFile(self, filePath:str, pathTo: str) -> bool:
+        pass
+
+
+
+    def createLogFile(self, path: str, fileName: str) -> bool:
+        pass
+
+    def deleteLogFile(self, filePath: str) -> bool:
+        pass
+
+    def appendContentToLogFile(self, filePath: str, content: str) -> bool:
+        pass
+
+    def readLogFile(self, filePath:str) -> str:
+        pass
+
+    def moveLogFile(self, filePath:str, pathTo: str) -> bool:
         pass
     
-    def deleteElement(self, path: str) -> str:
+
+    def createBufFile(self, path: str, fileName: str) -> bool:
         pass
 
-class Directory:
-    def __init__(self, dir_max_elems: int) -> None:
+    def deleteBufFile(self, filePath: str) -> bool:
         pass
 
-class File(ABC):
-    def __init__(self) -> None:
-        super().__init__()
-
-class BinaryFile(File):
-    def __init__(self) -> None:
+    def pushToBufFile(self, filePath: str, elem) -> bool:
         pass
 
-class LogTextFile(File):
-    def __init__(self) -> None:
+    def consumeFromBufFile(self, filePath:str):
         pass
 
-class BufferFile(File):
-    def __init__(self, max_buf_file_size: int) -> None:
+    def moveBufFile(self, filePath:str, pathTo: str) -> bool:
         pass
-
